@@ -1,12 +1,45 @@
 import channels from "./channels.js";
+const imperialChannels = [...channels];
+
+const toImperialNotation = (channels) => {
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const prepareNumbers = (x) => {
+    return x.toString().replace(/ /g, "");
+  };
+
+  for (let channel of imperialChannels) {
+    channel.statistics.viewCount = prepareNumbers(channel.statistics.viewCount);
+    channel.statistics.subscriberCount = prepareNumbers(
+      channel.statistics.subscriberCount
+    );
+    channel.statistics.videoCount = prepareNumbers(
+      channel.statistics.videoCount
+    );
+  }
+
+  for (let channel of imperialChannels) {
+    channel.statistics.viewCount = numberWithCommas(
+      channel.statistics.viewCount
+    );
+    channel.statistics.subscriberCount = numberWithCommas(
+      channel.statistics.subscriberCount
+    );
+    channel.statistics.videoCount = numberWithCommas(
+      channel.statistics.videoCount
+    );
+  }
+};
+
+toImperialNotation(channels);
 
 const loadContent = () => {
   const mainContent = document.getElementById("main");
-  console.log("mainContent:", mainContent);
-
   let html = "";
 
-  for (let channel of channels) {
+  for (let channel of imperialChannels) {
     html += `<a class="js-content_card" href="${channel.customUrl}">
 <div class="card_image-container">
   <img
@@ -32,8 +65,6 @@ const loadContent = () => {
 </div>
 </a>`;
   }
-
-  console.log("html:", html);
   mainContent.innerHTML = html;
 };
 

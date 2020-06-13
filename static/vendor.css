@@ -245,7 +245,7 @@ button:-moz-focusring {
 .wrapper__main.js-content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 1em;
+  grid-column-gap: 1em;
 }
 
 .wrapper__main .js-content_card {
