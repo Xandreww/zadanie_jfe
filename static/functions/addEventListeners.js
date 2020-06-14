@@ -25,7 +25,11 @@ const addEventListeners = () => {
     videosButton,
     viewsButton,
   ];
+  const buttonDesc = document.getElementById("desc");
+  const buttonAsc = document.getElementById("asc");
   const clear = document.getElementById("clear");
+
+  let sortByAsc = false;
 
   input.addEventListener("input", () => {
     let filter = input.value.toUpperCase();
@@ -60,11 +64,26 @@ const addEventListeners = () => {
     }
   });
 
-  clear.addEventListener("change", () => {
+  clear.addEventListener("click", () => {
     for (let sortButton of sortButtons) {
       sortButton.checked = false;
     }
+    input.value = "";
     loadContent(toImperialNotation(channels));
+  });
+
+  buttonDesc.addEventListener("click", () => {
+    console.log("Sort by desc!");
+    if (sortByAsc === true) {
+      sortByAsc = false;
+    }
+  });
+
+  buttonAsc.addEventListener("click", () => {
+    console.log("Sort by asc!");
+    if (sortByAsc === false) {
+      sortByAsc = true;
+    }
   });
 };
 

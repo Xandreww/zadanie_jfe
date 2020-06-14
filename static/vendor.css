@@ -357,6 +357,38 @@ button:-moz-focusring {
     grid-row: 2 / 4;
   }
 
+  .aside_asc-desc {
+    display: flex;
+    width: 100%;
+    margin: 10px 0 20px 0;
+  }
+
+  .button_desc,
+  .button_asc {
+    flex: 50%;
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+  }
+
+  .button_desc {
+    margin-right: 20px;
+  }
+
+  .button_desc:hover,
+  .button_asc:hover {
+    background-color: yellow;
+  }
+
+  .fas {
+    font-size: 15px;
+    margin-left: 10px;
+  }
+
+  .fas:nth-of-type(1) {
+    margin-right: 10px;
+  }
+
   .wrapper__filter {
     order: 2;
     -ms-grid-column: 2;

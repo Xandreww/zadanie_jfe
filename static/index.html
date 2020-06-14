@@ -4,6 +4,12 @@
     <meta charset="utf-8" />
     <title>JavaScript Youtube Channels</title>
     <link rel="stylesheet" type="text/css" href="vendor.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
   </head>
   <body class="wrapper">
     <header class="wrapper__header">
@@ -63,6 +69,14 @@
             <label class="choice__label" for="sort-views">views</label>
           </li>
         </ul>
+        <div class="aside_asc-desc">
+          <button class="button button_desc" id="desc">
+            Desc<i class="fas fa-sort-amount-down"></i>
+          </button>
+          <button class="button button_asc" id="asc">
+            <i class="fas fa-sort-amount-up"></i>Asc
+          </button>
+        </div>
         <button class="button" id="clear">Clear</button>
       </div>
     </aside>
