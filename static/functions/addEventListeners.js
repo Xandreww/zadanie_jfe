@@ -1,7 +1,7 @@
 import channels from "../channels.js";
 import loadContent from "../functions/loadContent.js";
 import toImperialNotation from "../functions/toImperialNotation.js";
-import { sortBySubs, sortByVideos, sortByViews } from "./sort.js";
+import { sortBySubs, sortByVideos, sortByViews, sortByTitle } from "./sort.js";
 
 const addEventListeners = () => {
   const title = document.getElementById("title");
@@ -21,31 +21,34 @@ const addEventListeners = () => {
   const clear = document.getElementById("clear");
 
   title.addEventListener("change", () => {
-    console.log("Sort by title");
+    if ((titleButton.checked = true)) {
+      console.log("Sort by title");
+      sortByTitle(channels);
+    }
   });
 
-  subscribers.addEventListener("click", () => {
+  subscribers.addEventListener("change", () => {
     if ((subscribersButton.checked = true)) {
       console.log("Sort by subscribers");
       sortBySubs(channels);
     }
   });
 
-  videos.addEventListener("click", () => {
+  videos.addEventListener("change", () => {
     if ((videosButton.checked = true)) {
       console.log("Sort by videos");
       sortByVideos(channels);
     }
   });
 
-  views.addEventListener("click", () => {
+  views.addEventListener("change", () => {
     if ((viewsButton.checked = true)) {
       console.log("Sort by views");
       sortByViews(channels);
     }
   });
 
-  clear.addEventListener("click", () => {
+  clear.addEventListener("change", () => {
     for (let sortButton of sortButtons) {
       sortButton.checked = false;
     }
