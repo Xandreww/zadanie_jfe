@@ -15,3 +15,27 @@ export const sortBySubs = (array) => {
 
   loadContent(sortedBySubs);
 };
+
+export const sortByVideos = (array) => {
+  let sortedByVideos = [...array];
+  sortedByVideos.sort((a, b) => {
+    return (
+      prepareNumbers(b.statistics.videoCount) -
+      prepareNumbers(a.statistics.videoCount)
+    );
+  });
+
+  loadContent(sortedByVideos);
+};
+
+export const sortByViews = (array) => {
+  let sortedByViews = [...array];
+  sortedByViews.sort((a, b) => {
+    return (
+      prepareNumbers(b.statistics.viewCount) -
+      prepareNumbers(a.statistics.viewCount)
+    );
+  });
+
+  loadContent(sortedByViews);
+};

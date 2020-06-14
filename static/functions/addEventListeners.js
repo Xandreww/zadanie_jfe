@@ -1,7 +1,7 @@
 import channels from "../channels.js";
 import loadContent from "../functions/loadContent.js";
 import toImperialNotation from "../functions/toImperialNotation.js";
-import { sortBySubs } from "./sort.js";
+import { sortBySubs, sortByVideos, sortByViews } from "./sort.js";
 
 const addEventListeners = () => {
   const title = document.getElementById("title");
@@ -24,19 +24,25 @@ const addEventListeners = () => {
     console.log("Sort by title");
   });
 
-  subscribers.addEventListener("change", () => {
+  subscribers.addEventListener("click", () => {
     if ((subscribersButton.checked = true)) {
       console.log("Sort by subscribers");
       sortBySubs(channels);
     }
   });
 
-  videos.addEventListener("change", () => {
-    console.log("Sort by videos");
+  videos.addEventListener("click", () => {
+    if ((videosButton.checked = true)) {
+      console.log("Sort by videos");
+      sortByVideos(channels);
+    }
   });
 
-  views.addEventListener("change", () => {
-    console.log("Sort by views");
+  views.addEventListener("click", () => {
+    if ((viewsButton.checked = true)) {
+      console.log("Sort by views");
+      sortByViews(channels);
+    }
   });
 
   clear.addEventListener("click", () => {
