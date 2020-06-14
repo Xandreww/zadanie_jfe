@@ -1,13 +1,14 @@
 import channels from "./channels.js";
-const imperialChannels = [...channels];
+// const imperialChannels = [...channels];
 
 const toImperialNotation = (channels) => {
+  const imperialChannels = [...channels];
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   const prepareNumbers = (x) => {
-    return x.toString().replace(/ /g, "");
+    return x.toString().replace(/[ .]/g, "");
   };
 
   for (let channel of imperialChannels) {
@@ -31,9 +32,11 @@ const toImperialNotation = (channels) => {
       channel.statistics.videoCount
     );
   }
+
+  return imperialChannels;
 };
 
-toImperialNotation(channels);
+// toImperialNotation(channels);
 
 const loadContent = (channels) => {
   const mainContent = document.getElementById("main");
@@ -69,7 +72,7 @@ const loadContent = (channels) => {
 };
 
 window.onload = () => {
-  loadContent(imperialChannels);
+  loadContent(toImperialNotation(channels));
 };
 
 const addEventListeners = () => {
