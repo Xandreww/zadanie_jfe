@@ -1,9 +1,16 @@
 import channels from "../channels.js";
 import loadContent from "../functions/loadContent.js";
 import toImperialNotation from "../functions/toImperialNotation.js";
-import { sortBySubs, sortByVideos, sortByViews, sortByTitle } from "./sort.js";
+import {
+  sortBySubs,
+  sortByVideos,
+  sortByViews,
+  sortByTitle,
+  sortWithInput,
+} from "./sort.js";
 
 const addEventListeners = () => {
+  const input = document.getElementById("input");
   const title = document.getElementById("title");
   const titleButton = document.getElementById("sort-title");
   const subscribers = document.getElementById("subscribers");
@@ -19,6 +26,11 @@ const addEventListeners = () => {
     viewsButton,
   ];
   const clear = document.getElementById("clear");
+
+  input.addEventListener("input", () => {
+    let filter = input.value.toUpperCase();
+    loadContent(sortWithInput(channels, filter));
+  });
 
   title.addEventListener("change", () => {
     if ((titleButton.checked = true)) {

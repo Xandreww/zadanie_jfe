@@ -43,8 +43,8 @@ export const sortByViews = (array) => {
 export const sortByTitle = (array) => {
   let sortedByTitle = [...array];
   sortedByTitle.sort((a, b) => {
-    var nameA = a.title.toUpperCase(); // ignore upper and lowercase
-    var nameB = b.title.toUpperCase(); // ignore upper and lowercase
+    var nameA = a.title.toUpperCase();
+    var nameB = b.title.toUpperCase();
     if (nameA < nameB) {
       return -1;
     }
@@ -52,9 +52,15 @@ export const sortByTitle = (array) => {
       return 1;
     }
 
-    // names must be equal
     return 0;
   });
 
   loadContent(sortedByTitle);
+};
+
+export const sortWithInput = (arr, query) => {
+  let cloneArr = [...arr];
+  return cloneArr.filter(
+    (el) => el.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
+  );
 };
