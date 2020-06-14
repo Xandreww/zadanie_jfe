@@ -9,32 +9,7 @@
     <header class="wrapper__header">
       <h1 class="header"><span class="header__js-logo"></span> Channels</h1>
     </header>
-    <main class="wrapper__main js-content" id="main">
-      <!-- <a class="js-content_card" href="https://youtube.com/funfunfunction">
-        <div class="card_image-container">
-          <img
-            src="https://yt3.ggpht.com/a-/AN66SAzjMJRUuJm10kRK7ybMLDmXtRH71_F1YapMjw=s800-mo-c-c0xffffffff-rj-k-no"
-            alt="Fun Fun Function"
-            class="card_image"
-          />
-        </div>
-        <h1 class="card_header">Fun Fun Function</h1>
-        <div class="card_stats">
-          <div class="stats_details">
-            <h2>Subscribers:</h2>
-            <p>180691</p>
-          </div>
-          <div class="stats_details">
-            <h2>Videos:</h2>
-            <p>7261372</p>
-          </div>
-          <div class="stats_details">
-            <h2>Views:</h2>
-            <p>7261372</p>
-          </div>
-        </div>
-      </a> -->
-    </main>
+    <main class="wrapper__main js-content" id="main"></main>
     <div class="wrapper__filter">
       <div class="filter">
         <input
@@ -48,7 +23,7 @@
       <div class="sort">
         <h3 class="sort__header">Sort channels by:</h3>
         <ul class="sort__options">
-          <li>
+          <li id="title">
             <input
               class="choice choice--radio"
               name="sort"
@@ -57,7 +32,7 @@
             />
             <label class="choice__label" for="sort-title">title</label>
           </li>
-          <li>
+          <li id="subscribers">
             <input
               class="choice choice--radio"
               name="sort"
@@ -68,7 +43,7 @@
               >subscribers</label
             >
           </li>
-          <li>
+          <li id="videos">
             <input
               class="choice choice--radio"
               name="sort"
@@ -77,7 +52,7 @@
             />
             <label class="choice__label" for="sort-videos">videos</label>
           </li>
-          <li>
+          <li id="views">
             <input
               class="choice choice--radio"
               name="sort"
