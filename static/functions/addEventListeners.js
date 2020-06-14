@@ -29,7 +29,16 @@ const addEventListeners = () => {
   const buttonAsc = document.getElementById("asc");
   const clear = document.getElementById("clear");
 
-  let sortByAsc = false;
+  let sortByAsc = null;
+
+  const simulateClick = (elem) => {
+    var evt = new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    });
+    let cancelled = !elem.dispatchEvent(evt);
+  };
 
   input.addEventListener("input", () => {
     let filter = input.value.toUpperCase();
@@ -37,30 +46,46 @@ const addEventListeners = () => {
   });
 
   title.addEventListener("change", () => {
-    if ((titleButton.checked = true)) {
-      console.log("Sort by title");
-      sortByTitle(channels);
+    if (titleButton.checked === true) {
+      if (sortByAsc === null) {
+        simulateClick(buttonDesc);
+        buttonDesc.focus();
+        sortByAsc = false;
+      }
+      sortByTitle(channels, sortByAsc);
     }
   });
 
   subscribers.addEventListener("change", () => {
-    if ((subscribersButton.checked = true)) {
-      console.log("Sort by subscribers");
-      sortBySubs(channels);
+    if (subscribersButton.checked === true) {
+      if (sortByAsc === null) {
+        simulateClick(buttonDesc);
+        buttonDesc.focus();
+        sortByAsc = false;
+      }
+      sortBySubs(channels, sortByAsc);
     }
   });
 
   videos.addEventListener("change", () => {
-    if ((videosButton.checked = true)) {
-      console.log("Sort by videos");
-      sortByVideos(channels);
+    if (videosButton.checked === true) {
+      if (sortByAsc === null) {
+        simulateClick(buttonDesc);
+        buttonDesc.focus();
+        sortByAsc = false;
+      }
+      sortByVideos(channels, sortByAsc);
     }
   });
 
   views.addEventListener("change", () => {
-    if ((viewsButton.checked = true)) {
-      console.log("Sort by views");
-      sortByViews(channels);
+    if (viewsButton.checked === true) {
+      if (sortByAsc === null) {
+        simulateClick(buttonDesc);
+        buttonDesc.focus();
+        sortByAsc = false;
+      }
+      sortByViews(channels, sortByAsc);
     }
   });
 
@@ -73,16 +98,50 @@ const addEventListeners = () => {
   });
 
   buttonDesc.addEventListener("click", () => {
-    console.log("Sort by desc!");
     if (sortByAsc === true) {
       sortByAsc = false;
+    }
+
+    for (let sortButton of sortButtons) {
+      if (sortButton.checked === true) {
+        if (sortByAsc === false) {
+          const sortBy = sortButton.id;
+          switch (sortBy) {
+            case "sort-title":
+              sortByTitle(channels, sortByAsc);
+            case "sort-subscribers":
+              sortBySubs(channels, sortByAsc);
+            case "sort-videos":
+              sortByVideos(channels, sortByAsc);
+            case "sort-views":
+              sortByViews(channels, sortByAsc);
+          }
+        }
+      }
     }
   });
 
   buttonAsc.addEventListener("click", () => {
-    console.log("Sort by asc!");
     if (sortByAsc === false) {
       sortByAsc = true;
+    }
+
+    for (let sortButton of sortButtons) {
+      if (sortButton.checked === true) {
+        if (sortByAsc === true) {
+          const sortBy = sortButton.id;
+          switch (sortBy) {
+            case "sort-title":
+              sortByTitle(channels, sortByAsc);
+            case "sort-subscribers":
+              sortBySubs(channels, sortByAsc);
+            case "sort-videos":
+              sortByVideos(channels, sortByAsc);
+            case "sort-views":
+              sortByViews(channels, sortByAsc);
+          }
+        }
+      }
     }
   });
 };
