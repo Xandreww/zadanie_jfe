@@ -1,6 +1,7 @@
 import channels from "../channels.js";
 import loadContent from "../functions/loadContent.js";
 import toImperialNotation from "../functions/toImperialNotation.js";
+import { sortBySubs } from "./sort.js";
 
 const addEventListeners = () => {
   const title = document.getElementById("title");
@@ -44,22 +45,6 @@ const addEventListeners = () => {
     }
     loadContent(toImperialNotation(channels));
   });
-
-  const prepareNumbers = (x) => {
-    return parseInt(x.replace(/[., ]/g, ""));
-  };
-
-  const sortBySubs = (array) => {
-    let sortedBySubs = [...array];
-    sortedBySubs.sort((a, b) => {
-      return (
-        prepareNumbers(b.statistics.subscriberCount) -
-        prepareNumbers(a.statistics.subscriberCount)
-      );
-    });
-
-    loadContent(sortedBySubs);
-  };
 };
 
 export default addEventListeners;
