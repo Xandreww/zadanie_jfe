@@ -19,3 +19,6 @@ W odpowiedzi na konkretny event wywolywana jest funkcja sortujaca z pliku sort.j
 
 3.4) toImperialNotation oraz inne funkcje pomocnicze
 Aby dane byly gotowe do wyswietlenia w notacji imperialnej, a takze gotowe so sortowania, dane sa przeszukiwane za pomoca konkretnego regexu i znalezione elementy sa odpowiednio zmieniane.
+
+3.5) Sortowanie roznaca/malejaca
+Probowalem poradzic sobie z tym zadaniem, ale nie do konca mi sie udalo. Sortowanie nie dziala poprawnie.
