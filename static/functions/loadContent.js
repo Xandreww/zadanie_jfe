@@ -3,7 +3,7 @@ const loadContent = (channels) => {
   let html = "";
 
   for (let channel of channels) {
-    html += `<a class="js-content_card" href="${channel.customUrl}">
+    html += `<a class="js-content_card" href="${channel.customUrl}" target="_blank">
 <div class="card_image-container">
   <img
     src="${channel.thumbnails.medium.url}"
