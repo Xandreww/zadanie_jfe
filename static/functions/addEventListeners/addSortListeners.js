@@ -8,6 +8,8 @@ import {
   sortByTitle,
   sortWithInput,
 } from "../sort.js";
+import { sortByAsc } from "./switchSortTypeListeners.js";
+console.log("sortByAsc", sortByAsc);
 
 const addSortListeners = () => {
   const input = document.getElementById("input");
@@ -26,8 +28,6 @@ const addSortListeners = () => {
     viewsButton,
   ];
   const clear = document.getElementById("clear");
-
-  let sortByAsc = false;
 
   input.addEventListener("input", () => {
     let filter = input.value.toUpperCase();
