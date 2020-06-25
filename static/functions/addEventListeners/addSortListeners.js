@@ -8,8 +8,7 @@ import {
   sortByTitle,
   sortWithInput,
 } from "../sort.js";
-import { sortByAsc } from "./switchSortTypeListeners.js";
-console.log("sortByAsc", sortByAsc);
+export let sortByAsc = false;
 
 const addSortListeners = () => {
   const input = document.getElementById("input");
@@ -21,13 +20,15 @@ const addSortListeners = () => {
   const videosButton = document.getElementById("sort-videos");
   const views = document.getElementById("views");
   const viewsButton = document.getElementById("sort-views");
+  const clear = document.getElementById("clear");
+  const buttonDesc = document.getElementById("desc");
+  const buttonAsc = document.getElementById("asc");
   const sortButtons = [
     titleButton,
     subscribersButton,
     videosButton,
     viewsButton,
   ];
-  const clear = document.getElementById("clear");
 
   input.addEventListener("input", () => {
     let filter = input.value.toUpperCase();
@@ -64,6 +65,60 @@ const addSortListeners = () => {
     }
     input.value = "";
     loadContent(toImperialNotation(channels));
+  });
+
+  buttonDesc.addEventListener("click", () => {
+    if (sortByAsc === true) {
+      let checked = sortButtons.filter(
+        (sortButton) => sortButton.checked === true
+      );
+
+      sortByAsc = false;
+      const sortBy = checked[0].id;
+
+      switch (sortBy) {
+        case "sort-title":
+          sortByTitle(channels, sortByAsc);
+          break;
+        case "sort-subscribers":
+          sortBySubs(channels, sortByAsc);
+          break;
+        case "sort-videos":
+          sortByVideos(channels, sortByAsc);
+          break;
+        case "sort-views":
+          sortByViews(channels, sortByAsc);
+          break;
+      }
+      return sortByAsc;
+    }
+  });
+
+  buttonAsc.addEventListener("click", () => {
+    if (sortByAsc === false) {
+      let checked = sortButtons.filter(
+        (sortButton) => sortButton.checked === true
+      );
+
+      sortByAsc = true;
+      const sortBy = checked[0].id;
+
+      switch (sortBy) {
+        case "sort-title":
+          sortByTitle(channels, sortByAsc);
+          break;
+        case "sort-subscribers":
+          sortBySubs(channels, sortByAsc);
+          break;
+        case "sort-videos":
+          sortByVideos(channels, sortByAsc);
+          break;
+        case "sort-views":
+          sortByViews(channels, sortByAsc);
+          break;
+      }
+      return sortByAsc;
+    }
   });
 };
 
